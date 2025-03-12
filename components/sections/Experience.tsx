@@ -74,10 +74,10 @@ function ExperienceCard({
     >
       <Card>
         <CardHeader>
-          <div className="flex justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
             <div className="space-y-1">
-              <div className="flex items-center gap-2">
-                <CardTitle className="text-2xl">
+              <div className="flex flex-wrap items-center gap-2">
+                <CardTitle className="text-xl sm:text-2xl">
                   {url ? (
                     <a
                       href={url}
@@ -86,7 +86,7 @@ function ExperienceCard({
                       className="hover:text-primary flex items-center gap-2 transition-colors"
                     >
                       {job_title}
-                      <ExternalLink className="size-5" />
+                      <ExternalLink className="size-4 sm:size-5" />
                     </a>
                   ) : (
                     job_title
@@ -102,7 +102,7 @@ function ExperienceCard({
                 {company} • {location}
               </CardDescription>
             </div>
-            <span className="text-sm text-zinc-500">
+            <span className="text-sm text-zinc-500 shrink-0">
               {startDateFormatted} - {endDateFormatted}
             </span>
           </div>

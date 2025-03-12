@@ -30,6 +30,7 @@ type RPCResponse = {
   description: string;
   start_date: string;
   end_date: string | null;
+  relevant_link: string | null;
   job_type_id: number;
   job_type_name: string;
   tags: Array<{
@@ -66,6 +67,7 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
           description: exp.description,
           start_date: exp.start_date,
           end_date: exp.end_date,
+          url: exp.relevant_link,
           job_type: {
             id: exp.job_type_id,
             type: exp.job_type_name,

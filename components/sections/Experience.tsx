@@ -24,7 +24,7 @@ function ExperienceCard({
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
   console.log("Rendering experience:", experience);
-  const { job_title, description, start_date, end_date, tags, job_type } =
+  const { job_title, description, start_date, end_date, tags, job_type, url } =
     experience;
 
   console.log("Job type:", job_type);
@@ -68,7 +68,21 @@ function ExperienceCard({
           <div className="flex justify-between">
             <div>
               <div className="flex items-center gap-2">
-                <CardTitle className="text-2xl">{job_title}</CardTitle>
+                <CardTitle className="text-2xl">
+                  {url ? (
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-primary flex items-center gap-2 transition-colors"
+                    >
+                      {job_title}
+                      <ExternalLink className="size-5" />
+                    </a>
+                  ) : (
+                    job_title
+                  )}
+                </CardTitle>
                 {job_type && (
                   <Badge variant="secondary" className="font-normal">
                     {job_type.type}

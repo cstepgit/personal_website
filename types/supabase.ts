@@ -15,6 +15,7 @@ export type WorkExperience = {
   description: string;
   start_date: string;
   end_date: string | null;
+  url: string | null;
   job_type: JobType;
   tags: Tag[];
 };

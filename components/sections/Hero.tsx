@@ -27,7 +27,7 @@ export function Hero() {
           transition={{ delay: 0.5 }}
           className="text-2xl text-zinc-600 dark:text-zinc-400 font-light"
         >
-          Learn about how I can help you
+          Learn about my skillsets and experiences
         </motion.p>
       </motion.div>
     </motion.div>

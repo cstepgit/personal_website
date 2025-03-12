@@ -6,7 +6,7 @@ import { SupabaseProvider } from "@/contexts/SupabaseContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Your Name - Portfolio",
+  title: "Cooper Stepanain",
   description: "Personal portfolio and professional experience",
 };
 

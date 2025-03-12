@@ -24,6 +24,21 @@ export const useSupabase = () => {
   return context;
 };
 
+type RPCResponse = {
+  work_experience_id: number;
+  job_title: string;
+  description: string;
+  start_date: string;
+  end_date: string | null;
+  job_type_id: number;
+  job_type_name: string;
+  tags: Array<{
+    tag_id: number;
+    tag_name: string;
+    tag_type: string;
+  }>;
+};
+
 export function SupabaseProvider({ children }: { children: React.ReactNode }) {
   const [experiences, setExperiences] = useState<WorkExperience[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,16 +48,37 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
     async function fetchData() {
       try {
         setLoading(true);
+        const { data, error: fetchError } = await supabase.rpc(
+          "get_work_experience"
+        );
 
-        // Simple direct query
-        const { data, error } = await supabase
-          .from("work_experience")
-          .select("*");
+        if (fetchError) {
+          console.error("Fetch error:", fetchError);
+          throw fetchError;
+        }
 
-        if (error) throw error;
+        console.log("Raw data from RPC:", data);
 
-        console.log("Fetched data:", data);
-        setExperiences(data || []);
+        // Transform the RPC data to match our WorkExperience type
+        const transformedExperiences = (data as RPCResponse[]).map((exp) => ({
+          id: exp.work_experience_id,
+          job_title: exp.job_title,
+          description: exp.description,
+          start_date: exp.start_date,
+          end_date: exp.end_date,
+          job_type: {
+            id: exp.job_type_id,
+            type: exp.job_type_name,
+          },
+          tags: exp.tags.map((tag) => ({
+            id: tag.tag_id,
+            name: tag.tag_name,
+            type: tag.tag_type,
+          })),
+        }));
+
+        console.log("Transformed experiences:", transformedExperiences);
+        setExperiences(transformedExperiences);
       } catch (err) {
         console.error("Error fetching data:", err);
         setError(

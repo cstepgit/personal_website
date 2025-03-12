@@ -24,8 +24,17 @@ function ExperienceCard({
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
   console.log("Rendering experience:", experience);
-  const { job_title, description, start_date, end_date, tags, job_type, url } =
-    experience;
+  const {
+    job_title,
+    description,
+    start_date,
+    end_date,
+    tags,
+    job_type,
+    url,
+    company,
+    location,
+  } = experience;
 
   console.log("Job type:", job_type);
   console.log("Tags:", tags);
@@ -66,7 +75,7 @@ function ExperienceCard({
       <Card>
         <CardHeader>
           <div className="flex justify-between">
-            <div>
+            <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <CardTitle className="text-2xl">
                   {url ? (
@@ -89,6 +98,9 @@ function ExperienceCard({
                   </Badge>
                 )}
               </div>
+              <CardDescription className="text-sm text-zinc-500">
+                {company} • {location}
+              </CardDescription>
             </div>
             <span className="text-sm text-zinc-500">
               {startDateFormatted} - {endDateFormatted}

@@ -24,10 +24,10 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.25 }}
           className="text-2xl text-zinc-600 dark:text-zinc-400 font-light"
         >
-          Learn about my skillsets and experiences
+          Learn about my interests, skillsets, and experiences
         </motion.p>
       </motion.div>
     </motion.div>

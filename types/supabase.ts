@@ -9,6 +9,11 @@ export type JobType = {
   type: string;
 };
 
+export type Interest = {
+  id: number;
+  interest: string;
+};
+
 export type WorkExperience = {
   id: number;
   job_title: string;
@@ -39,6 +44,11 @@ export type Database = {
         Row: JobType;
         Insert: Omit<JobType, "id">;
         Update: Partial<Omit<JobType, "id">>;
+      };
+      interests: {
+        Row: Interest;
+        Insert: Omit<Interest, "id">;
+        Update: Partial<Omit<Interest, "id">>;
       };
     };
   };

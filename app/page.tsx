@@ -1,6 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { Hero } from "@/components/sections/Hero";
 import { Experience } from "@/components/sections/Experience";
+import { Interests } from "@/components/sections/Interests";
 import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <div className="relative">
         <div className="h-screen" /> {/* Spacer for hero section */}
         <main className="container mx-auto px-6 py-16 max-w-3xl space-y-16">
+          <Interests />
           <Experience />
           <Footer />
         </main>

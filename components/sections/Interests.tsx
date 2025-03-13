@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState, useEffect, useRef } from "react";
 import type { Interest } from "@/types/supabase";
-import { X, Plus } from "lucide-react";
+import { X } from "lucide-react";
 import { useSupabase } from "@/contexts/SupabaseContext";
 
 export function Interests() {
@@ -83,7 +83,6 @@ export function Interests() {
                     <p className="text-center font-medium group-hover:text-primary transition-colors">
                       {interest.interest}
                     </p>
-                    <Plus className="h-3.5 w-3.5 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
                 </div>
               </Card>
@@ -108,7 +107,7 @@ export function Interests() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-lg"
+              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[90vw] max-w-lg mx-auto"
             >
               <Card className="relative">
                 <button

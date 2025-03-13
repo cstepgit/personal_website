@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Send, Loader2 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type Message = {
   id: string;
@@ -21,11 +22,14 @@ export function ChatBot() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  // Function to scroll to bottom of messages
+  // Function to scroll chat to bottom without affecting page scroll
   const scrollToBottom = () => {
-    if (messagesEndRef.current && isExpanded) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current && chatContainerRef.current && isExpanded) {
+      // Use scrollIntoView with a block: "nearest" to prevent page scrolling
+      chatContainerRef.current.scrollTop =
+        chatContainerRef.current.scrollHeight;
     }
   };
 
@@ -36,14 +40,18 @@ export function ChatBot() {
 
     // Expand and process the question
     setIsExpanded(true);
-    handleSubmitQuestion(input.trim());
 
-    // Focus the input in the expanded chat after a delay
+    // Use setTimeout to ensure state updates before processing
     setTimeout(() => {
-      if (inputRef.current) {
-        inputRef.current.focus();
-      }
-    }, 300);
+      handleSubmitQuestion(input.trim());
+
+      // Focus the input in the expanded chat after a delay
+      setTimeout(() => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      }, 300);
+    }, 100);
   };
 
   // Process a question and get a response
@@ -119,6 +127,10 @@ export function ChatBot() {
     handleSubmitQuestion(input.trim());
   };
 
+  // Custom input style to remove focus ring
+  const inputStyle =
+    "focus-visible:ring-0 focus-visible:ring-offset-0 border-zinc-300 dark:border-zinc-700";
+
   return (
     <section className="space-y-4 w-full">
       <div className="flex items-center gap-2">
@@ -143,7 +155,7 @@ export function ChatBot() {
             placeholder="Ask me anything about my experience..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-1"
+            className={cn("flex-1", inputStyle)}
           />
           <Button type="submit" disabled={!input.trim()}>
             <Send className="w-4 h-4" />
@@ -160,7 +172,10 @@ export function ChatBot() {
           >
             <Card className="border rounded-lg">
               <CardContent className="p-4 space-y-4">
-                <div className="space-y-4 min-h-[200px] max-h-[400px] overflow-y-auto">
+                <div
+                  ref={chatContainerRef}
+                  className="space-y-4 min-h-[200px] max-h-[400px] overflow-y-auto scroll-smooth"
+                >
                   {messages.length === 0 ? (
                     <div className="h-full flex items-center justify-center text-muted-foreground text-sm">
                       Ask a question to start the conversation
@@ -209,7 +224,7 @@ export function ChatBot() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     disabled={isLoading}
-                    className="flex-1"
+                    className={cn("flex-1", inputStyle)}
                   />
                   <Button type="submit" disabled={isLoading || !input.trim()}>
                     {isLoading ? (

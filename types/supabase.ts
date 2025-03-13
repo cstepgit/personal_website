@@ -12,6 +12,8 @@ export type JobType = {
 export type Interest = {
   id: number;
   interest: string;
+  projects?: string[];
+  active_learning?: string[];
 };
 
 export type WorkExperience = {

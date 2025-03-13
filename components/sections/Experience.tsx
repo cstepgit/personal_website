@@ -14,6 +14,12 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 function ExperienceCard({
   experience,
@@ -58,14 +64,14 @@ function ExperienceCard({
   return (
     <motion.div
       id={`experience-${id}`}
-      initial={{ x: 100, opacity: 0 }}
-      whileInView={{ x: 0, opacity: 1 }}
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{
-        duration: 0.5,
-        delay: index * 0.2,
+        duration: 0.4,
+        delay: index * 0.1,
         type: "spring",
-        damping: 20,
+        damping: 25,
       }}
       className="scroll-mt-16 w-full"
     >
@@ -166,16 +172,43 @@ export function Experience() {
   if (!experiences || experiences.length === 0)
     return <div>No experiences found</div>;
 
+  // Separate main and non-main experiences
+  const mainExperiences = experiences.filter((exp) => exp.main);
+  const otherExperiences = experiences.filter((exp) => !exp.main);
+
   return (
     <section id="experience-section" className="space-y-6 w-full">
       <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">
         Work Experience
       </h2>
       <div className="grid gap-4 sm:gap-6 w-full">
-        {experiences.map((exp, index) => (
+        {mainExperiences.map((exp, index) => (
           <ExperienceCard key={exp.id} experience={exp} index={index} />
         ))}
       </div>
+
+      {otherExperiences.length > 0 && (
+        <div className="mt-8">
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="more-experiences" className="border-none">
+              <AccordionTrigger className="py-2 text-base sm:text-lg font-semibold">
+                More Experiences
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className="grid gap-4 sm:gap-6 w-full pt-4">
+                  {otherExperiences.map((exp, index) => (
+                    <ExperienceCard
+                      key={exp.id}
+                      experience={exp}
+                      index={index}
+                    />
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      )}
     </section>
   );
 }

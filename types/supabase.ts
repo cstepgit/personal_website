@@ -39,6 +39,7 @@ export type WorkExperience = {
   url: string | null;
   job_type: JobType;
   tags: Tag[];
+  main: boolean;
 };
 
 export type Database = {

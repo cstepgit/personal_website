@@ -43,6 +43,7 @@ type RPCResponse = {
   relevant_link: string | null;
   job_type_id: number;
   job_type_name: string;
+  main: boolean;
   tags: Array<{
     tag_id: number;
     tag_name: string;
@@ -61,6 +62,7 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
     async function fetchData() {
       try {
         setLoading(true);
+        console.log("Starting data fetch...");
 
         // Fetch work experiences
         const { data: expData, error: fetchError } = await supabase.rpc(
@@ -68,9 +70,11 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
         );
 
         if (fetchError) {
-          console.error("Fetch error:", fetchError);
-          throw fetchError;
+          console.error("Work experience fetch error:", fetchError);
+          throw new Error(`Work experience fetch error: ${fetchError.message}`);
         }
+
+        console.log("Work experiences fetched:", expData);
 
         // Fetch interests
         const { data: interestsData, error: interestsError } = await supabase
@@ -80,8 +84,10 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
 
         if (interestsError) {
           console.error("Interests fetch error:", interestsError);
-          throw interestsError;
+          throw new Error(`Interests fetch error: ${interestsError.message}`);
         }
+
+        console.log("Interests fetched:", interestsData);
 
         // Fetch education experiences
         const { data: educationData, error: educationError } = await supabase
@@ -91,8 +97,10 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
 
         if (educationError) {
           console.error("Education fetch error:", educationError);
-          throw educationError;
+          throw new Error(`Education fetch error: ${educationError.message}`);
         }
+
+        console.log("Education data fetched:", educationData);
 
         // Transform the RPC data to match our WorkExperience type
         const transformedExperiences = (expData as RPCResponse[]).map(
@@ -105,6 +113,7 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
             start_date: exp.start_date,
             end_date: exp.end_date,
             url: exp.relevant_link,
+            main: exp.main,
             job_type: {
               id: exp.job_type_id,
               type: exp.job_type_name,
@@ -117,11 +126,21 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
           })
         );
 
+        console.log("Data transformation complete:", {
+          experiences: transformedExperiences.length,
+          interests: interestsData.length,
+          education: educationData.length,
+        });
+
         setExperiences(transformedExperiences);
         setInterests(interestsData);
         setEducation(educationData);
       } catch (err) {
-        console.error("Error fetching data:", err);
+        console.error("Detailed error:", {
+          error: err,
+          message: err instanceof Error ? err.message : "Unknown error",
+          stack: err instanceof Error ? err.stack : undefined,
+        });
         setError(
           err instanceof Error ? err : new Error("Failed to fetch data")
         );

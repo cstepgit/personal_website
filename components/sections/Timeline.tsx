@@ -387,9 +387,12 @@ export function Timeline() {
   )
     return null;
 
+  // Filter to only main experiences
+  const mainExperiences = experiences?.filter((exp) => exp.main) || [];
+
   // Combine and sort experiences and education by date
   const timelineEntries: TimelineEntry[] = [
-    ...(experiences?.map((exp) => ({
+    ...(mainExperiences.map((exp) => ({
       id: exp.id,
       type: "work" as const,
       date: exp.start_date,

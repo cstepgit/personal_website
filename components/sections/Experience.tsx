@@ -23,8 +23,8 @@ function ExperienceCard({
   index: number;
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
-  console.log("Rendering experience:", experience);
   const {
+    id,
     job_title,
     description,
     start_date,
@@ -35,9 +35,6 @@ function ExperienceCard({
     company,
     location,
   } = experience;
-
-  console.log("Job type:", job_type);
-  console.log("Tags:", tags);
 
   // Simple date formatting
   const formatDate = (dateStr: string) => {
@@ -62,6 +59,7 @@ function ExperienceCard({
 
   return (
     <motion.div
+      id={`experience-${id}`}
       initial={{ x: 100, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       viewport={{ once: true }}
@@ -71,6 +69,7 @@ function ExperienceCard({
         type: "spring",
         damping: 20,
       }}
+      className="scroll-mt-16" // Add scroll margin to account for sticky header
     >
       <Card>
         <CardHeader>
@@ -79,15 +78,18 @@ function ExperienceCard({
               <div className="flex flex-wrap items-center gap-2">
                 <CardTitle className="text-xl sm:text-2xl">
                   {url ? (
-                    <a
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-primary flex items-center gap-2 transition-colors"
-                    >
+                    <span className="flex items-center gap-2">
                       {job_title}
-                      <ExternalLink className="size-4 sm:size-5" />
-                    </a>
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-primary transition-colors"
+                        aria-label={`Visit ${company} website`}
+                      >
+                        <ExternalLink className="size-4 sm:size-5" />
+                      </a>
+                    </span>
                   ) : (
                     job_title
                   )}
@@ -162,7 +164,7 @@ export function Experience() {
     return <div>No experiences found</div>;
 
   return (
-    <section className="space-y-6">
+    <section id="experience-section" className="space-y-6">
       <h2 className="text-2xl font-semibold tracking-tight">Work Experience</h2>
       <div className="grid gap-6">
         {experiences.map((exp, index) => (

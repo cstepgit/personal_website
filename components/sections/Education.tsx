@@ -5,6 +5,8 @@ import { useSupabase } from "@/contexts/SupabaseContext";
 import type { EducationExperience } from "@/types/supabase";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Badge } from "@/components/ui/badge";
+import { ExternalLink } from "lucide-react";
 
 function EducationCard({
   education,
@@ -13,7 +15,14 @@ function EducationCard({
   education: EducationExperience;
   index: number;
 }) {
-  const { university, degree, degree_type, gpa } = education;
+  const {
+    university,
+    degree,
+    degree_type,
+    gpa,
+    relevant_courses,
+    relevant_link,
+  } = education;
   const [formattedDates, setFormattedDates] = useState({
     start: "",
     end: "Present",
@@ -36,6 +45,7 @@ function EducationCard({
 
   return (
     <motion.div
+      id={`education-${education.id}`}
       initial={{ x: 100, opacity: 0 }}
       whileInView={{ x: 0, opacity: 1 }}
       viewport={{ once: true }}
@@ -45,27 +55,58 @@ function EducationCard({
         type: "spring",
         damping: 20,
       }}
-      className="w-full"
+      className="w-full scroll-mt-16"
     >
       <Card className="overflow-hidden w-full">
-        <CardHeader className="p-3 sm:p-4 md:p-6">
-          <div className="flex flex-col sm:flex-row items-start justify-between gap-1">
-            <div className="max-w-[75%] space-y-0.5">
-              <CardTitle className="text-base sm:text-lg md:text-xl break-words">
+        <CardHeader className="p-3 sm:p-4 md:p-6 pb-0 sm:pb-0 md:pb-0">
+          <div className="flex flex-col sm:flex-row items-start justify-between gap-1.5">
+            <div className="space-y-0.5 sm:space-y-1 w-full sm:max-w-[75%]">
+              <CardTitle className="text-base sm:text-lg md:text-xl break-words leading-tight">
                 {degree_type} in {degree}
+                {relevant_link && (
+                  <a
+                    href={relevant_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary transition-colors inline-flex ml-1.5 align-baseline"
+                    aria-label={`Visit ${university} website`}
+                  >
+                    <ExternalLink className="size-3.5 sm:size-4" />
+                  </a>
+                )}
               </CardTitle>
-              <p className="text-xs text-zinc-500">{university}</p>
+              <p className="text-xs sm:text-sm text-zinc-500">{university}</p>
             </div>
-            <div className="flex flex-col items-end gap-0.5 shrink-0">
+            <div className="flex flex-row sm:flex-col items-start sm:items-end gap-2 sm:gap-0.5 mt-1 sm:mt-0 w-full sm:w-auto shrink-0">
               <span className="text-xs text-zinc-500">
                 {formattedDates.start} - {formattedDates.end}
               </span>
-              <span className="text-xs text-zinc-500">
+              <span className="text-xs text-zinc-500 sm:text-right">
                 GPA: {gpa.toFixed(2)}
               </span>
             </div>
           </div>
         </CardHeader>
+        {relevant_courses && relevant_courses.length > 0 && (
+          <CardContent className="p-3 sm:p-4 md:p-6 pt-1 sm:pt-1 md:pt-1 mt-[-4px]">
+            <div className="space-y-1.5">
+              <h4 className="text-xs font-medium text-zinc-500">
+                Relevant Coursework
+              </h4>
+              <div className="flex flex-wrap gap-1 sm:gap-1.5">
+                {relevant_courses.map((course) => (
+                  <Badge
+                    key={course}
+                    variant="outline"
+                    className="text-xs px-2.5 py-0.5"
+                  >
+                    {course}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          </CardContent>
+        )}
       </Card>
     </motion.div>
   );
@@ -81,11 +122,11 @@ export function Education() {
     return <div>No education found</div>;
 
   return (
-    <section id="education-section" className="space-y-6 w-full">
+    <section id="education-section" className="space-y-4 sm:space-y-6 w-full">
       <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">
         Education
       </h2>
-      <div className="grid gap-4 sm:gap-6 w-full">
+      <div className="grid gap-3 sm:gap-4 w-full">
         {education.map((edu, index) => (
           <EducationCard key={edu.id} education={edu} index={index} />
         ))}

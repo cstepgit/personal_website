@@ -70,7 +70,7 @@ function ExperienceCard({
       className="scroll-mt-16 w-full"
     >
       <Card className="overflow-hidden w-full">
-        <CardHeader className="p-3 sm:p-4 md:p-6">
+        <CardHeader className="p-3 sm:p-4 md:p-6 pb-0 sm:pb-0 md:pb-0">
           <div className="flex flex-col gap-0.5 sm:gap-1 sm:flex-row sm:justify-between">
             <div className="space-y-0">
               <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
@@ -107,8 +107,8 @@ function ExperienceCard({
             </span>
           </div>
         </CardHeader>
-        <CardContent className="p-3 sm:p-4 md:p-6 pt-0 sm:pt-0 md:pt-0">
-          <div className="space-y-3 sm:space-y-4">
+        <CardContent className="p-3 sm:p-4 md:p-6 pt-1 sm:pt-1 md:pt-1 mt-[-4px]">
+          <div className="space-y-2 sm:space-y-3">
             <div>
               <p
                 className={`text-xs text-zinc-600 dark:text-zinc-400 whitespace-pre-line ${
@@ -129,9 +129,9 @@ function ExperienceCard({
             </div>
 
             {tags && tags.length > 0 && (
-              <div className="space-y-2 sm:space-y-3">
+              <div className="space-y-1.5 sm:space-y-2 mt-1">
                 {Object.entries(tagsByType).map(([type, typeTags]) => (
-                  <div key={type} className="space-y-1 sm:space-y-1.5">
+                  <div key={type} className="space-y-1">
                     <h4 className="text-xs font-medium text-zinc-500">
                       {type}
                     </h4>
@@ -140,7 +140,7 @@ function ExperienceCard({
                         <Badge
                           key={tag.id}
                           variant="outline"
-                          className="text-xs px-1.5 py-0"
+                          className="text-xs px-2.5 py-0.5"
                         >
                           {tag.name}
                         </Badge>

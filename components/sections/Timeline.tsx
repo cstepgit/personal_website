@@ -217,7 +217,7 @@ function TimelineItem({
                       <Badge
                         key={tag.id}
                         variant="outline"
-                        className="text-xs px-1.5 py-0"
+                        className="text-xs px-2.5 py-0.5"
                       >
                         {tag.name}
                       </Badge>
@@ -261,7 +261,7 @@ function TimelineEducationItem({
     });
   }, [education.start_date, education.end_date]);
 
-  const { id, university, degree, degree_type, gpa } = education;
+  const { id, university, degree, degree_type, gpa, relevant_link } = education;
 
   // Function to scroll to the corresponding education section
   const scrollToEducation = () => {
@@ -327,6 +327,17 @@ function TimelineEducationItem({
               >
                 {degree_type} in {degree}
               </button>
+              {relevant_link && (
+                <a
+                  href={relevant_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors flex-shrink-0"
+                  aria-label={`Visit ${university} website`}
+                >
+                  <ExternalLink className="size-3 sm:size-3.5" />
+                </a>
+              )}
             </h3>
           </div>
 
@@ -408,7 +419,7 @@ export function Timeline() {
         transition={{ duration: 0.5 }}
         className="text-xl sm:text-2xl font-semibold tracking-tight"
       >
-        Experience Timeline
+        Timeline
       </motion.h2>
 
       <motion.div

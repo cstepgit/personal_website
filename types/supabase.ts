@@ -24,6 +24,8 @@ export type EducationExperience = {
   start_date: string;
   end_date: string | null;
   gpa: number;
+  relevant_courses: string[];
+  relevant_link: string | null;
 };
 
 export type WorkExperience = {

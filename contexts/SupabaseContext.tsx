@@ -1,12 +1,17 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import type { WorkExperience, Interest } from "@/types/supabase";
+import type {
+  WorkExperience,
+  Interest,
+  EducationExperience,
+} from "@/types/supabase";
 import { supabase } from "@/lib/supabase/client";
 
 type SupabaseContextType = {
   experiences: WorkExperience[];
   interests: Interest[];
+  education: EducationExperience[];
   loading: boolean;
   error: Error | null;
 };
@@ -14,6 +19,7 @@ type SupabaseContextType = {
 const SupabaseContext = createContext<SupabaseContextType>({
   experiences: [],
   interests: [],
+  education: [],
   loading: true,
   error: null,
 });
@@ -47,6 +53,7 @@ type RPCResponse = {
 export function SupabaseProvider({ children }: { children: React.ReactNode }) {
   const [experiences, setExperiences] = useState<WorkExperience[]>([]);
   const [interests, setInterests] = useState<Interest[]>([]);
+  const [education, setEducation] = useState<EducationExperience[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
@@ -76,6 +83,17 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
           throw interestsError;
         }
 
+        // Fetch education experiences
+        const { data: educationData, error: educationError } = await supabase
+          .from("education_experience")
+          .select("*")
+          .order("start_date", { ascending: false });
+
+        if (educationError) {
+          console.error("Education fetch error:", educationError);
+          throw educationError;
+        }
+
         // Transform the RPC data to match our WorkExperience type
         const transformedExperiences = (expData as RPCResponse[]).map(
           (exp) => ({
@@ -101,6 +119,7 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
 
         setExperiences(transformedExperiences);
         setInterests(interestsData);
+        setEducation(educationData);
       } catch (err) {
         console.error("Error fetching data:", err);
         setError(
@@ -116,7 +135,7 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <SupabaseContext.Provider
-      value={{ experiences, interests, loading, error }}
+      value={{ experiences, interests, education, loading, error }}
     >
       {children}
     </SupabaseContext.Provider>

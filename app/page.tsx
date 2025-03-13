@@ -4,6 +4,7 @@ import { Experience } from "@/components/sections/Experience";
 import { Interests } from "@/components/sections/Interests";
 import { Footer } from "@/components/sections/Footer";
 import { Timeline } from "@/components/sections/Timeline";
+import { Education } from "@/components/sections/Education";
 
 export default function Home() {
   return (
@@ -17,6 +18,8 @@ export default function Home() {
           <Interests />
           <Separator className="my-6 sm:my-8" />
           <Experience />
+          <Separator className="my-6 sm:my-8" />
+          <Education />
           <Footer />
         </main>
       </div>

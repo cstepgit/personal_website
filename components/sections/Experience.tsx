@@ -10,7 +10,7 @@ import {
 import { useSupabase } from "@/contexts/SupabaseContext";
 import { Badge } from "@/components/ui/badge";
 import type { WorkExperience, Tag } from "@/types/supabase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
@@ -23,30 +23,28 @@ function ExperienceCard({
   index: number;
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const {
-    id,
-    job_title,
-    description,
-    start_date,
-    end_date,
-    tags,
-    job_type,
-    url,
-    company,
-    location,
-  } = experience;
+  const [formattedDates, setFormattedDates] = useState({
+    start: "",
+    end: "Present",
+  });
 
-  // Simple date formatting
-  const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString("en-US", {
-      month: "short",
-      year: "numeric",
+  const { id, job_title, description, tags, job_type, url, company, location } =
+    experience;
+
+  useEffect(() => {
+    const formatDate = (dateStr: string) => {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString("en-US", {
+        month: "short",
+        year: "numeric",
+      });
+    };
+
+    setFormattedDates({
+      start: formatDate(experience.start_date),
+      end: experience.end_date ? formatDate(experience.end_date) : "Present",
     });
-  };
-
-  const startDateFormatted = formatDate(start_date);
-  const endDateFormatted = end_date ? formatDate(end_date) : "Present";
+  }, [experience.start_date, experience.end_date]);
 
   // Organize tags by type
   const tagsByType =
@@ -73,8 +71,8 @@ function ExperienceCard({
     >
       <Card className="overflow-hidden w-full">
         <CardHeader className="p-3 sm:p-4 md:p-6">
-          <div className="flex flex-col gap-2 sm:gap-3 sm:flex-row sm:justify-between">
-            <div className="space-y-1">
+          <div className="flex flex-col gap-0.5 sm:gap-1 sm:flex-row sm:justify-between">
+            <div className="space-y-0">
               <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                 <CardTitle className="text-base sm:text-lg md:text-xl">
                   {url ? (
@@ -105,7 +103,7 @@ function ExperienceCard({
               </CardDescription>
             </div>
             <span className="text-xs text-zinc-500 shrink-0">
-              {startDateFormatted} - {endDateFormatted}
+              {formattedDates.start} - {formattedDates.end}
             </span>
           </div>
         </CardHeader>

@@ -16,6 +16,16 @@ export type Interest = {
   active_learning?: string[];
 };
 
+export type EducationExperience = {
+  id: number;
+  university: string;
+  degree: string;
+  degree_type: string;
+  start_date: string;
+  end_date: string | null;
+  gpa: number;
+};
+
 export type WorkExperience = {
   id: number;
   job_title: string;
@@ -51,6 +61,11 @@ export type Database = {
         Row: Interest;
         Insert: Omit<Interest, "id">;
         Update: Partial<Omit<Interest, "id">>;
+      };
+      education_experience: {
+        Row: EducationExperience;
+        Insert: Omit<EducationExperience, "id">;
+        Update: Partial<Omit<EducationExperience, "id">>;
       };
     };
   };

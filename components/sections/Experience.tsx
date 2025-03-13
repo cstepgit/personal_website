@@ -69,51 +69,51 @@ function ExperienceCard({
         type: "spring",
         damping: 20,
       }}
-      className="scroll-mt-16" // Add scroll margin to account for sticky header
+      className="scroll-mt-16 w-full"
     >
-      <Card>
-        <CardHeader>
-          <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
+      <Card className="overflow-hidden w-full">
+        <CardHeader className="p-3 sm:p-4 md:p-6">
+          <div className="flex flex-col gap-2 sm:gap-3 sm:flex-row sm:justify-between">
             <div className="space-y-1">
-              <div className="flex flex-wrap items-center gap-2">
-                <CardTitle className="text-xl sm:text-2xl">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <CardTitle className="text-base sm:text-lg md:text-xl">
                   {url ? (
-                    <span className="flex items-center gap-2">
-                      {job_title}
+                    <span className="flex items-center gap-1.5">
+                      <span className="break-words">{job_title}</span>
                       <a
                         href={url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-primary transition-colors"
+                        className="hover:text-primary transition-colors flex-shrink-0"
                         aria-label={`Visit ${company} website`}
                       >
-                        <ExternalLink className="size-4 sm:size-5" />
+                        <ExternalLink className="size-3.5 sm:size-4" />
                       </a>
                     </span>
                   ) : (
-                    job_title
+                    <span className="break-words">{job_title}</span>
                   )}
                 </CardTitle>
                 {job_type && (
-                  <Badge variant="secondary" className="font-normal">
+                  <Badge variant="secondary" className="font-normal text-xs">
                     {job_type.type}
                   </Badge>
                 )}
               </div>
-              <CardDescription className="text-sm text-zinc-500">
+              <CardDescription className="text-xs text-zinc-500">
                 {company} • {location}
               </CardDescription>
             </div>
-            <span className="text-sm text-zinc-500 shrink-0">
+            <span className="text-xs text-zinc-500 shrink-0">
               {startDateFormatted} - {endDateFormatted}
             </span>
           </div>
         </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
+        <CardContent className="p-3 sm:p-4 md:p-6 pt-0 sm:pt-0 md:pt-0">
+          <div className="space-y-3 sm:space-y-4">
             <div>
               <p
-                className={`text-sm text-zinc-600 dark:text-zinc-400 whitespace-pre-line ${
+                className={`text-xs text-zinc-600 dark:text-zinc-400 whitespace-pre-line ${
                   !isExpanded ? "line-clamp-4" : ""
                 }`}
               >
@@ -122,7 +122,7 @@ function ExperienceCard({
               {description.length > 200 && (
                 <Button
                   variant="link"
-                  className="h-auto p-0 text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300"
+                  className="h-auto p-0 text-xs text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300"
                   onClick={() => setIsExpanded(!isExpanded)}
                 >
                   {isExpanded ? "See less" : "See more"}
@@ -131,15 +131,19 @@ function ExperienceCard({
             </div>
 
             {tags && tags.length > 0 && (
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {Object.entries(tagsByType).map(([type, typeTags]) => (
-                  <div key={type} className="space-y-1.5">
-                    <h4 className="text-sm font-medium text-zinc-500">
+                  <div key={type} className="space-y-1 sm:space-y-1.5">
+                    <h4 className="text-xs font-medium text-zinc-500">
                       {type}
                     </h4>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1 sm:gap-1.5">
                       {typeTags.map((tag) => (
-                        <Badge key={tag.id} variant="outline">
+                        <Badge
+                          key={tag.id}
+                          variant="outline"
+                          className="text-xs px-1.5 py-0"
+                        >
                           {tag.name}
                         </Badge>
                       ))}
@@ -158,15 +162,18 @@ function ExperienceCard({
 export function Experience() {
   const { experiences, loading, error } = useSupabase();
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return <div className="h-24 animate-pulse bg-muted rounded-md" />;
   if (error) return <div>Error: {error.message}</div>;
   if (!experiences || experiences.length === 0)
     return <div>No experiences found</div>;
 
   return (
-    <section id="experience-section" className="space-y-6">
-      <h2 className="text-2xl font-semibold tracking-tight">Work Experience</h2>
-      <div className="grid gap-6">
+    <section id="experience-section" className="space-y-6 w-full">
+      <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">
+        Work Experience
+      </h2>
+      <div className="grid gap-4 sm:gap-6 w-full">
         {experiences.map((exp, index) => (
           <ExperienceCard key={exp.id} experience={exp} index={index} />
         ))}

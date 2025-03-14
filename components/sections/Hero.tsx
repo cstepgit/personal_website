@@ -2,6 +2,7 @@
 
 import { useScroll, motion, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { ChevronDown } from "lucide-react";
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,10 +29,26 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25 }}
-          className="text-lg sm:text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 font-light"
+          className="text-lg sm:text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 font-light mb-8 sm:mb-12"
         >
           Learn about my interests, skillsets, and experiences
         </motion.p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: [0.3, 1, 0.3],
+            y: [0, 8, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Number.POSITIVE_INFINITY,
+            repeatType: "loop",
+            ease: "easeInOut",
+          }}
+          className="flex justify-center"
+        >
+          <ChevronDown className="w-8 h-8 sm:w-10 sm:h-10 text-zinc-600 dark:text-zinc-400" />
+        </motion.div>
       </motion.div>
     </motion.div>
   );

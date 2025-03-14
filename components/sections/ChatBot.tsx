@@ -105,7 +105,8 @@ export function ChatBot() {
       const errorMessage: Message = {
         id: `error-${Date.now()}`,
         role: "assistant",
-        content: "Sorry, I encountered an error. Please try again later.",
+        content:
+          "Sorry, the backend isn't running right now. Compute time is expensive! Cashapp me @ $CooperStepanian to help me pay for my server bills :D",
         timestamp: Date.now(),
       };
 

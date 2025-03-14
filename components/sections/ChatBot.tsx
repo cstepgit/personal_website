@@ -92,22 +92,25 @@ export function ChatBot() {
         }),
       });
 
-      if (!response.ok) {
-        let errorMessage = "Failed to get response";
-        try {
-          const errorData = await response.json();
-          errorMessage = errorData.error?.message || errorMessage;
-        } catch (e) {
-          console.error("Error parsing error response:", e);
-        }
-        throw new Error(errorMessage);
+      const data = await response.json();
+
+      // Check if there's an error in the response
+      if (data.error) {
+        console.error("API error:", data.error);
+        throw new Error(data.error);
       }
 
-      const data = await response.json();
+      // Get the assistant's response from the choices array
+      const assistantResponse = data.choices?.[0]?.message?.content;
+
+      if (!assistantResponse) {
+        throw new Error("No response content received from API");
+      }
+
       const assistantMessage: Message = {
         id: `assistant-${Date.now()}`,
         role: "assistant",
-        content: data.choices[0].message.content,
+        content: assistantResponse,
         timestamp: Date.now(),
       };
 

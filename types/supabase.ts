@@ -42,6 +42,15 @@ export type WorkExperience = {
   main: boolean;
 };
 
+export type ChatBotQuery = {
+  id: number;
+  query: string;
+  response: string;
+  timestamp: string;
+  user_agent?: string;
+  ip_address?: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -69,6 +78,11 @@ export type Database = {
         Row: EducationExperience;
         Insert: Omit<EducationExperience, "id">;
         Update: Partial<Omit<EducationExperience, "id">>;
+      };
+      chatbotquerries: {
+        Row: ChatBotQuery;
+        Insert: Omit<ChatBotQuery, "id">;
+        Update: Partial<Omit<ChatBotQuery, "id">>;
       };
     };
   };

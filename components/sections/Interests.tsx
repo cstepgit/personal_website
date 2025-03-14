@@ -59,9 +59,24 @@ export function Interests() {
 
   return (
     <section className="space-y-4 sm:space-y-6 w-full">
-      <h2 className="text-xl sm:text-2xl font-semibold tracking-tight">
-        Interests
-      </h2>
+      <div className="space-y-1 sm:space-y-2">
+        <motion.h2
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-xl sm:text-2xl font-semibold tracking-tight"
+        >
+          Interests
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-sm text-zinc-500 dark:text-zinc-400"
+        >
+          Click on an interest to view my experience with it
+        </motion.p>
+      </div>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
         {interests.map((interest, index) => (
           <motion.div
@@ -101,9 +116,9 @@ export function Interests() {
           <>
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
+              animate={{ opacity: 0.6 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50"
+              className="fixed inset-0 bg-background/90 backdrop-blur-sm z-50"
               onClick={() => setActiveId(null)}
             />
             <motion.div
@@ -112,35 +127,37 @@ export function Interests() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[90vw] max-w-lg mx-auto"
+              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[95vw] max-w-2xl mx-auto"
             >
-              <Card className="relative overflow-hidden">
+              <Card className="relative overflow-hidden shadow-lg">
                 <button
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     setActiveId(null);
                   }}
-                  className="absolute right-3 top-3 p-1.5 rounded-full hover:bg-accent transition-colors z-10"
+                  className="absolute right-4 top-4 p-2 rounded-full hover:bg-accent hover:text-primary transition-colors z-10"
+                  aria-label="Close modal"
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-5 w-5" />
                 </button>
-                <CardContent className="p-4 sm:p-6">
-                  <div className="space-y-3 sm:space-y-4">
+                <CardContent className="p-5 sm:p-7 md:p-9">
+                  <div className="space-y-5 sm:space-y-7">
                     <h3 className="text-lg sm:text-xl font-semibold">
                       {activeInterest.interest}
                     </h3>
 
                     {activeInterest.projects &&
                       activeInterest.projects.length > 0 && (
-                        <div className="space-y-2">
+                        <div className="space-y-3">
                           <h4 className="text-sm font-medium text-muted-foreground">
                             Projects
                           </h4>
-                          <ul className="space-y-1 list-disc list-inside text-sm text-zinc-600 dark:text-zinc-400">
+                          <ul className="space-y-2 list-disc list-inside text-sm text-zinc-600 dark:text-zinc-400">
                             {activeInterest.projects.map((project) => (
                               <li
                                 key={`${activeInterest.id}-project-${project}`}
+                                className="pl-2"
                               >
                                 {project}
                               </li>
@@ -151,13 +168,16 @@ export function Interests() {
 
                     {activeInterest.active_learning &&
                       activeInterest.active_learning.length > 0 && (
-                        <div className="space-y-2">
+                        <div className="space-y-3">
                           <h4 className="text-sm font-medium text-muted-foreground">
                             Active Learning
                           </h4>
-                          <ul className="space-y-1 list-disc list-inside text-sm text-zinc-600 dark:text-zinc-400">
+                          <ul className="space-y-2 list-disc list-inside text-sm text-zinc-600 dark:text-zinc-400">
                             {activeInterest.active_learning.map((item) => (
-                              <li key={`${activeInterest.id}-learning-${item}`}>
+                              <li
+                                key={`${activeInterest.id}-learning-${item}`}
+                                className="pl-2"
+                              >
                                 {item}
                               </li>
                             ))}

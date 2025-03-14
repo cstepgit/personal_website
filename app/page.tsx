@@ -6,6 +6,7 @@ import { Footer } from "@/components/sections/Footer";
 import { Timeline } from "@/components/sections/Timeline";
 import { Education } from "@/components/sections/Education";
 import { ChatBot } from "@/components/sections/ChatBot";
+import { Introduction } from "@/components/sections/Introduction";
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <div className="relative">
         <div className="h-screen" /> {/* Spacer for hero section */}
         <main className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 max-w-3xl space-y-12 sm:space-y-16">
+          <Introduction />
+          <Separator className="my-6 sm:my-8" />
           <ChatBot />
           <Separator className="my-6 sm:my-8" />
           <Timeline />

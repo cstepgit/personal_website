@@ -1,0 +1,82 @@
+Contact Information:
+- Phone: 425-417-5718
+- Email: cooperstepanian@gmail.com
+- LinkedIn: https://www.linkedin.com/in/cooper-stepanian
+
+Core Competencies:
+- Data Engineering
+- User Experience (UX)
+- User Interface (UI) Design
+
+Certifications:
+- Open Water Scuba Diver
+
+Professional Summary:
+Cooper Stepanian is a senior computer science student at Gonzaga University based in Bothell, Washington. He brings a wide-ranging background in program management, software engineering, product development, cybersecurity, digital marketing, photography, and videography. With strong technical skills and a creative edge, Cooper excels in designing user-friendly interfaces, driving full-cycle product development, and collaborating effectively within cross-functional teams.
+
+Professional Experience:
+
+1. Machine Learning Engineer, Pangeon
+   Location: Spokane, WA
+   Duration: September 2024 – Present (7 months)
+   - Developed a predictive model using both Type 1 and Type 2 AI to forecast housing prices, refining the model based on actionable insights.
+   - Managed large datasets by sourcing, cleaning, and applying geospatial techniques (Uber H3) to enhance data context.
+   - Authored detailed documentation and presented findings to stakeholders.
+
+2. Co-Founder/Software Engineer, Muv
+   Location: Spokane, WA
+   Duration: January 2024 – Present (1 year 3 months)
+   - Collaborated with cross-functional teams including marketing and software engineering; worked with Gonzaga’s New Venture Lab on startup initiatives.
+   - Contributed to the lean business canvas model and established partnerships with local Spokane businesses.
+   - Designed the app's UI using Figma and gathered user feedback through focus groups.
+   - Developed app features using React Native, integrated Supabase for backend support, and implemented vectorized databases with the OpenAI API for semantic search and event ranking.
+   - Maintained clear documentation and version control using GitHub.
+
+3. Creative Director, Gonzaga Kennel Club
+   Location: Spokane, WA
+   Duration: May 2023 – Present (1 year 11 months)
+   - Oversees content creation for the largest student-run, self-funded club at Gonzaga, achieving over 250k views.
+   - Collaborates with Gonzaga Athletics to produce engaging media that enhances the student experience.
+
+4. Photographer/Videographer, Gonzaga Student Body Association
+   Location: Spokane, WA
+   Duration: August 2023 – Present (1 year 8 months)
+   - Works with the GSBA communications team to produce high-quality visual content that highlights campus events and advances the GSBA mission.
+
+5. Program Management Intern, KC7: The Cyber Mystery Game
+   Duration: May 2024 – August 2024 (4 months)
+   - Assisted in website design to improve usability and visual appeal.
+   - Created engaging AI-driven social media posts to boost online presence.
+   - Supported strategic marketing initiatives, updated website content for improved SEO, and tested program modules to ensure a seamless user experience.
+
+6. Photographer/Videographer, Gonzaga University
+   Location: Spokane, WA
+   Duration: January 2023 – May 2024 (1 year 5 months)
+   - Captured visual content that reflects Gonzaga’s mission and values, collaborating closely with the marketing team to produce compelling imagery of campus life.
+
+7. Administrative Assistant, Operativ Medical
+   Location: Kirkland, WA
+   Duration: April 2021 – September 2021 (6 months)
+   - Coordinated shipping, handling, and inspection of FDA-regulated surgical devices valued at over $500k.
+   - Processed complex purchase orders and managed client communications through to order fulfillment.
+
+8. Customer Experience Specialist, Best Buy
+   Location: Bellevue, WA
+   Duration: October 2020 – January 2021 (4 months)
+   - Assisted customers by processing purchases and providing technical product information, ensuring an environment of trusted service.
+
+9. Social Media Manager/Video Editor, The SwiftPath Program
+   Location: Kirkland, WA
+   Duration: June 2019 – August 2019 (3 months)
+   - Edited and produced video testimonials and interviews to enhance social media engagement.
+   - Developed creative content for website and marketing collateral, targeting post-surgical medical conditions.
+
+Education:
+
+- Gonzaga University
+  Bachelor’s Degree in Computer Science
+  Duration: August 2022 – May 2026
+
+- Bellevue College
+  Running Start in Liberal Arts and Sciences/Liberal Studies
+  Duration: 2020 – 2022

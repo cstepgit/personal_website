@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -27,7 +27,6 @@ export function ChatBot() {
   // Function to scroll chat to bottom without affecting page scroll
   const scrollToBottom = () => {
     if (messagesEndRef.current && chatContainerRef.current && isExpanded) {
-      // Use scrollIntoView with a block: "nearest" to prevent page scrolling
       chatContainerRef.current.scrollTop =
         chatContainerRef.current.scrollHeight;
     }
@@ -38,14 +37,9 @@ export function ChatBot() {
     e.preventDefault();
     if (!input.trim()) return;
 
-    // Expand and process the question
     setIsExpanded(true);
-
-    // Use setTimeout to ensure state updates before processing
     setTimeout(() => {
       handleSubmitQuestion(input.trim());
-
-      // Focus the input in the expanded chat after a delay
       setTimeout(() => {
         if (inputRef.current) {
           inputRef.current.focus();
@@ -70,33 +64,55 @@ export function ChatBot() {
 
     setMessages((prev) => {
       const newMessages = [...prev, newUserMessage];
-      // Schedule scroll after state update
       setTimeout(scrollToBottom, 100);
       return newMessages;
     });
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/ask", {
+      const conversationMessages = messages.map((msg) => ({
+        role: msg.role,
+        content: msg.content,
+      }));
+
+      const apiMessages = [
+        ...conversationMessages,
+        {
+          role: "user",
+          content: question,
+        },
+      ];
+
+      const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({
+          messages: apiMessages,
+        }),
       });
 
-      if (!response.ok) throw new Error("Failed to get response");
+      if (!response.ok) {
+        let errorMessage = "Failed to get response";
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error?.message || errorMessage;
+        } catch (e) {
+          console.error("Error parsing error response:", e);
+        }
+        throw new Error(errorMessage);
+      }
 
       const data = await response.json();
       const assistantMessage: Message = {
         id: `assistant-${Date.now()}`,
         role: "assistant",
-        content: data.response || data.answer || data.message,
+        content: data.choices[0].message.content,
         timestamp: Date.now(),
       };
 
       setMessages((prev) => {
         const newMessages = [...prev, assistantMessage];
-        // Schedule scroll after state update
         setTimeout(scrollToBottom, 100);
         return newMessages;
       });
@@ -106,13 +122,12 @@ export function ChatBot() {
         id: `error-${Date.now()}`,
         role: "assistant",
         content:
-          "Sorry, gemma3 isn't running right now. Compute time is expensive! Cashapp me @ $CooperStepanian to help me pay for my server bills 😃",
+          "Sorry, I couldn't process your request right now. Please try again later.",
         timestamp: Date.now(),
       };
 
       setMessages((prev) => {
         const newMessages = [...prev, errorMessage];
-        // Schedule scroll after state update
         setTimeout(scrollToBottom, 100);
         return newMessages;
       });
@@ -128,7 +143,6 @@ export function ChatBot() {
     handleSubmitQuestion(input.trim());
   };
 
-  // Custom input style to remove focus ring
   const inputStyle =
     "focus-visible:ring-0 focus-visible:ring-offset-0 border-zinc-300 dark:border-zinc-700";
 
@@ -164,7 +178,7 @@ export function ChatBot() {
             </Button>
           </form>
           <p className="text-xs text-center text-muted-foreground">
-            Powered By Gemma
+            Powered By GPT-4o-mini
           </p>
         </div>
       ) : (
@@ -242,7 +256,7 @@ export function ChatBot() {
                     </Button>
                   </form>
                   <p className="text-xs text-center text-muted-foreground">
-                    Powered By gemma3:4b
+                    Powered By GPT-4o-mini
                   </p>
                 </div>
               </CardContent>

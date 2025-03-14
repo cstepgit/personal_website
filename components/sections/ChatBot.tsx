@@ -106,7 +106,7 @@ export function ChatBot() {
         id: `error-${Date.now()}`,
         role: "assistant",
         content:
-          "Sorry, the backend isn't running right now. Compute time is expensive! Cashapp me @ $CooperStepanian to help me pay for my server bills :D",
+          "Sorry, gemma3 isn't running right now. Compute time is expensive! Cashapp me @ $CooperStepanian to help me pay for my server bills 😃",
         timestamp: Date.now(),
       };
 
@@ -151,17 +151,22 @@ export function ChatBot() {
       </div>
 
       {!isExpanded ? (
-        <form onSubmit={handleInitialSubmit} className="flex gap-2">
-          <Input
-            placeholder="Ask me anything about my experience..."
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            className={cn("flex-1", inputStyle)}
-          />
-          <Button type="submit" disabled={!input.trim()}>
-            <Send className="w-4 h-4" />
-          </Button>
-        </form>
+        <div className="space-y-2">
+          <form onSubmit={handleInitialSubmit} className="flex gap-2">
+            <Input
+              placeholder="Ask me anything about my experience..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              className={cn("flex-1", inputStyle)}
+            />
+            <Button type="submit" disabled={!input.trim()}>
+              <Send className="w-4 h-4" />
+            </Button>
+          </form>
+          <p className="text-xs text-center text-muted-foreground">
+            Powered By Gemma
+          </p>
+        </div>
       ) : (
         <AnimatePresence>
           <motion.div
@@ -215,26 +220,31 @@ export function ChatBot() {
                   <div ref={messagesEndRef} />
                 </div>
 
-                <form
-                  onSubmit={handleExpandedSubmit}
-                  className="flex gap-2 pt-2 border-t"
-                >
-                  <Input
-                    ref={inputRef}
-                    placeholder="Type your question..."
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    disabled={isLoading}
-                    className={cn("flex-1", inputStyle)}
-                  />
-                  <Button type="submit" disabled={isLoading || !input.trim()}>
-                    {isLoading ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <Send className="w-4 h-4" />
-                    )}
-                  </Button>
-                </form>
+                <div className="space-y-2">
+                  <form
+                    onSubmit={handleExpandedSubmit}
+                    className="flex gap-2 pt-2 border-t"
+                  >
+                    <Input
+                      ref={inputRef}
+                      placeholder="Type your question..."
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      disabled={isLoading}
+                      className={cn("flex-1", inputStyle)}
+                    />
+                    <Button type="submit" disabled={isLoading || !input.trim()}>
+                      {isLoading ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <Send className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </form>
+                  <p className="text-xs text-center text-muted-foreground">
+                    Powered By gemma3:4b
+                  </p>
+                </div>
               </CardContent>
             </Card>
           </motion.div>

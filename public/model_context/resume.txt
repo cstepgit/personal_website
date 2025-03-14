@@ -1,82 +1,52 @@
-Contact Information:
-- Phone: 425-417-5718
-- Email: cooperstepanian@gmail.com
-- LinkedIn: https://www.linkedin.com/in/cooper-stepanian
 
-Core Competencies:
-- Data Engineering
-- User Experience (UX)
-- User Interface (UI) Design
+The following is my education history and relevant coursework:
+Gonzaga University 	2022-08-22	2025-05-11	3.53	Computer Science 	Bachelor's	["CPSC 222 - Introduction to Data Science","ECON 201 - Microeconomics","CPSC 223 - Algorithm&Abstract Data Struct","CPSC 224 - Software Development","BUSN 230 - Business Statistics","CPSC 260 - Computer Organization","CPSC 331 - UI/UX Design","CPSC 334 - Linux and DevOps","ECON 355 - Regression Analysis","CPSC 321 - Database Management Systems","CPSC 323 - Machine Lrng & Intllgnt Systms","CPSC 491 - Software Engineering"]	https://www.gonzaga.edu/school-of-engineering-applied-science/degrees-and-programs/computer-science/bacsct
+Bellevue College	2020-09-13	2022-06-13	3.95	Liberal Arts and Sciences + Highschool Diploma	Associates	["PROG 110 - Intro to Programming","CS 101 - Tech and Computer Science","ECON 202 - Macroeconomics"]	https://www.bellevuecollege.edu/runningstart/
 
-Certifications:
-- Open Water Scuba Diver
+Here are my interests and projects and active learning i have done:
+Cybersecurity 	["Reviewed educational content to analyze cyber intrusion data using KQL","Completed OverTheWire challenges to enhance hands-on security skills","Completed KC7 intrusion data analysis modules for threat detection training"]	["Studied the MITRE ATT&CK Framework for adversarial tactics and techniques","Reviewed Security+ Objectives to build foundational cybersecurity knowledge","Followed CyberWire Daily Podcast for industry updates and insights","Watched Professor Messer YouTube videos for Security+ and cybersecurity training"]
+Software Engineering	["Muv Mobile App - Built using React Native and Supabase for event discovery and engagement","Muv Admin Dashboard - Developed in React for managing events and user interactions","Blackjack App - Implemented in Java with game logic and interactive swing UI","Linux Counter Daemon - Packaged a simple counter daemon with CI/CD testing using GitHub Actions.","Personal Website - Built with React and Tailwind for portfolio showcasing"]	["Simon Grimm React Tutorials - Expanding React expertise with hands-on learning"]
+Product Management 	["Led the Immobliare technical intern team at Pangeon","Bridged the gap between technical and business students at Pangeon","Coordinated multiple teams to successfully launch the Muv Mobile app"]	
+Data Engineering	["Collected, cleaned, and processed housing and economic data for King County to enhance model training","Utilized Uber H3 geospatial indexing to add location-based context to economic data for improved insights","Implemented vectorized databases to power efficient semantic search applications"]	
+Machine Learning	["Developed advanced home price prediction models using machine learning techniques","Implemented the A* Algorithm for pathfinding and optimization","Built a multi-class image classifier using a Convolutional Neural Network (CNN)","Designed a deep autoencoder for MNIST image reconstruction","Applied KMeans clustering and visualization techniques to housing data","Performed breast cancer classification using logistic regression for predictive analysis"]	["Studied mathematical concepts and machine learning fundamentals through 3Blue1Brown YouTube videos"]
+Entrepreneurship	["Co-founded Muv, a mobile event platform connecting college students with local businesses","Conducted market research to identify student loneliness and validate demand through focus groups","Built partnerships with local Spokane businesses to drive engagement","Pitched Muv to stakeholders, refining the business model and marketing strategy"]	
 
-Professional Summary:
-Cooper Stepanian is a senior computer science student at Gonzaga University based in Bothell, Washington. He brings a wide-ranging background in program management, software engineering, product development, cybersecurity, digital marketing, photography, and videography. With strong technical skills and a creative edge, Cooper excels in designing user-friendly interfaces, driving full-cycle product development, and collaborating effectively within cross-functional teams.
+The following are the skills I have learned and used in my projects:
+Predictive Modeling
+Data Preprocessing	
+Documentation	
+Presentation	
+Cross-functional Collaboration	
+Marketing	
+Customer Discovery	
+Business Strategy	
+UI/UX Design
+Research and Problem Validation	
+Team Collaboration	
+Python	
+JavaScript	
+React Native	
+Expo	
+Supabase	
+Uber H3	
+OpenAI API	
+Vectorized Databases	
+Figma	
+GitHub	
 
-Professional Experience:
-
-1. Machine Learning Engineer, Pangeon
-   Location: Spokane, WA
-   Duration: September 2024 – Present (7 months)
-   - Developed a predictive model using both Type 1 and Type 2 AI to forecast housing prices, refining the model based on actionable insights.
-   - Managed large datasets by sourcing, cleaning, and applying geospatial techniques (Uber H3) to enhance data context.
-   - Authored detailed documentation and presented findings to stakeholders.
-
-2. Co-Founder/Software Engineer, Muv
-   Location: Spokane, WA
-   Duration: January 2024 – Present (1 year 3 months)
-   - Collaborated with cross-functional teams including marketing and software engineering; worked with Gonzaga’s New Venture Lab on startup initiatives.
-   - Contributed to the lean business canvas model and established partnerships with local Spokane businesses.
-   - Designed the app's UI using Figma and gathered user feedback through focus groups.
-   - Developed app features using React Native, integrated Supabase for backend support, and implemented vectorized databases with the OpenAI API for semantic search and event ranking.
-   - Maintained clear documentation and version control using GitHub.
-
-3. Creative Director, Gonzaga Kennel Club
-   Location: Spokane, WA
-   Duration: May 2023 – Present (1 year 11 months)
-   - Oversees content creation for the largest student-run, self-funded club at Gonzaga, achieving over 250k views.
-   - Collaborates with Gonzaga Athletics to produce engaging media that enhances the student experience.
-
-4. Photographer/Videographer, Gonzaga Student Body Association
-   Location: Spokane, WA
-   Duration: August 2023 – Present (1 year 8 months)
-   - Works with the GSBA communications team to produce high-quality visual content that highlights campus events and advances the GSBA mission.
-
-5. Program Management Intern, KC7: The Cyber Mystery Game
-   Duration: May 2024 – August 2024 (4 months)
-   - Assisted in website design to improve usability and visual appeal.
-   - Created engaging AI-driven social media posts to boost online presence.
-   - Supported strategic marketing initiatives, updated website content for improved SEO, and tested program modules to ensure a seamless user experience.
-
-6. Photographer/Videographer, Gonzaga University
-   Location: Spokane, WA
-   Duration: January 2023 – May 2024 (1 year 5 months)
-   - Captured visual content that reflects Gonzaga’s mission and values, collaborating closely with the marketing team to produce compelling imagery of campus life.
-
-7. Administrative Assistant, Operativ Medical
-   Location: Kirkland, WA
-   Duration: April 2021 – September 2021 (6 months)
-   - Coordinated shipping, handling, and inspection of FDA-regulated surgical devices valued at over $500k.
-   - Processed complex purchase orders and managed client communications through to order fulfillment.
-
-8. Customer Experience Specialist, Best Buy
-   Location: Bellevue, WA
-   Duration: October 2020 – January 2021 (4 months)
-   - Assisted customers by processing purchases and providing technical product information, ensuring an environment of trusted service.
-
-9. Social Media Manager/Video Editor, The SwiftPath Program
-   Location: Kirkland, WA
-   Duration: June 2019 – August 2019 (3 months)
-   - Edited and produced video testimonials and interviews to enhance social media engagement.
-   - Developed creative content for website and marketing collateral, targeting post-surgical medical conditions.
-
-Education:
-
-- Gonzaga University
-  Bachelor’s Degree in Computer Science
-  Duration: August 2022 – May 2026
-
-- Bellevue College
-  Running Start in Liberal Arts and Sciences/Liberal Studies
-  Duration: 2020 – 2022
+The following are my work experiences with start date, end date, company, location, description, relevant link:
+1	Machine Learning Engineer	2024-09-12		Pangeon	Spokane, Washington, United States	"- Designed and implemented a predictive model integrating Type 1 and Type 2 AI to forecast housing prices, iterating the design based on actionable insights derived from the model
+- Sourced, cleaned, and preprocessed large datasets, utilizing Uber H3 to assign geospatial context to the data for improved model performance
+- Created comprehensive documentation and delivered presentations to stakeholders, effectively communicating model insights and business implications"	https://immob-3e85d.web.app/	
+2	Co-Founder/Software Engineer	2024-01-01		Muv	Spokane, Washington, United States	"- Worked in cross-functional teams with marketing and software engineering. Collaborated with Gonzaga’s New Venture Lab students to promote startup opportunities, focusing on marketing and customer discovery. 
+- Business strategy: Contributed to the development of the lean business canvas model and identified local Spokane businesses to partner with for the Muv app. 
+- UI/UX Design: Designed the user interface of the Muv app using Figma and organized student focus groups to gather feedback for customer discovery. App development and technical implementation: Coded key app features using React Native and Expo routing, integrated database functionality with Supabase, and implemented vectorized databases for semantic search and event ranking using the OpenAI API. 
+- Research and problem validation: Conducted research into the app's problem statement, identifying studies showing college students are increasingly lonely and seeking belonging. 
+- Teamwork and documentation: Utilized GitHub and effective version control practices while collaborating with a team of four engineers, and wrote clear documentation for code functionality."	https://www.whatsthemuv.com/	
+3	Program Manager 	2024-05-13	2024-08-13	KC7	Remote 	"-Assist in designing sections of the company website for a user-friendly and visually appealing interface
+-Create engaging social media posts using AI, boosting online presence and engagement
+-Contribute to the strategic direction of marketing efforts, supporting the development and implementation of effective campaigns
+-Update and refine website content to improve clarity, accuracy, and SEO performance
+-Proofread and test modules for the summer camp program, ensuring high-quality content and a seamless user experience"	https://kc7cyber.com/	
+4	Creative Director	2023-05-13		Gonzaga Kennel Club	Spokane, Washington	Oversee content creation for the largest student-run, self-funded club at Gonzaga, generating 250k+ views, and collaborating with Gonzaga Athletics to produce media that strengthens the student section.	https://www.instagram.com/gonzagakennelclub/?hl=en		
+5	Photographer/Videographer	2023-08-13		Gonzaga Student Body Association 	Spokane, Washington, United States	Collaborate with the GSBA communications team to produce high-quality media that showcases various events around campus and promotes the GSBA mission.	https://www.gonzaga.edu/student-life/student-affairs/our-departments-and-programs/center-for-student-involvement/gonzaga-student-body-association		

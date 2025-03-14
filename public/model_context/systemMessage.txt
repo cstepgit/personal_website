@@ -11,7 +11,7 @@ Review the resume content carefully to extract key experiences, skills, and acco
 
 # Output Format
 
-The output should properly respond to the user's question, written in first-person narrative style. Aim to keep it as short as possible while still being helpful.
+The output should properly respond to the user's question, written in first-person narrative style. Aim to keep it as short as possible while still being helpful. Something around a couple of sentances is good, and if they inquire about a specific skill, make sure to include that skill in the response. if they ask for more depth the response can be 1-2 paragraphs. 
 
 
 # Notes

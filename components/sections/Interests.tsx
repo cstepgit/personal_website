@@ -118,7 +118,7 @@ export function Interests() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.6 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-background/90 backdrop-blur-sm z-50"
+              className="fixed inset-0 bg-background/90 z-50 w-full h-full"
               onClick={() => setActiveId(null)}
             />
             <motion.div
@@ -127,7 +127,7 @@ export function Interests() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[95vw] max-w-2xl mx-auto"
+              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[51] w-[95vw] max-w-2xl mx-auto"
             >
               <Card className="relative overflow-hidden shadow-lg">
                 <button

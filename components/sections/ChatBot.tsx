@@ -181,7 +181,7 @@ export function ChatBot() {
             </Button>
           </form>
           <p className="text-xs text-center text-muted-foreground">
-            Powered By GPT-4o-mini
+            Powered By GPT-4o-mini... take it with a grain of salt
           </p>
         </div>
       ) : (
@@ -259,7 +259,7 @@ export function ChatBot() {
                     </Button>
                   </form>
                   <p className="text-xs text-center text-muted-foreground">
-                    Powered By GPT-4o-mini
+                    Powered By GPT-4o-mini... take it with a grain of salt
                   </p>
                 </div>
               </CardContent>
